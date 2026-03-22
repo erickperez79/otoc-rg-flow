@@ -1,0 +1,45 @@
+{
+  "title": "Empirical Characterization of an Autonomous Accessibility Flow: A Universal β-Function and Continuous IR Fixed-Point Spectrum from Out-of-Time-Order Correlators",
+  "description": "Simulation data, analysis scripts, and figures for Paper III of the Kaelion OTOC KB series. We report the first systematic empirical characterization of an autonomous accessibility flow extracted from OTOCs across eleven quantum many-body models spanning four dynamical classes. The effective β-function collapses onto the universal logistic form β = −c Ω(1−Ω) (slope=1.003, χ²/dof=1.11, p=0.31). The scaling exponent c spans c ∈ [0.17, 4.30] and is invariant under change of local observable (1.2%) and UV symmetry class (4%). A pre-registered prediction c ∈ [1,4] for intermediate-range interactions is confirmed with c = 3.41 ± 0.48.",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "cc-by-4.0",
+  "creators": [
+    {
+      "name": "Perez Eugenio, Erick Francisco",
+      "affiliation": "Independent Researcher, León, Guanajuato, Mexico",
+      "orcid": "0009-0006-3228-4847"
+    }
+  ],
+  "keywords": [
+    "OTOCs",
+    "out-of-time-order correlators",
+    "quantum scrambling",
+    "renormalization group",
+    "quantum chaos",
+    "Luttinger liquid",
+    "Schwarzian",
+    "JT gravity",
+    "kicked Ising model",
+    "SYK model",
+    "information scrambling",
+    "β-function",
+    "universality class",
+    "finite-size scaling"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.18752608",
+      "relation": "isPartOf",
+      "scheme": "doi",
+      "resource_type": "publication-preprint"
+    },
+    {
+      "identifier": "10.5281/zenodo.19105623",
+      "relation": "isPartOf",
+      "scheme": "doi",
+      "resource_type": "publication-preprint"
+    }
+  ],
+  "notes": "Paper III of the Kaelion OTOC KB series. Companion papers: Paper I (10.5281/zenodo.18752608), Paper II (10.5281/zenodo.19105623)."
+}

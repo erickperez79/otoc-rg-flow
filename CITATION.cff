@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the associated preprint."
+type: software
+title: "Empirical Characterization of an Autonomous Accessibility Flow: A Universal β-Function and Continuous IR Fixed-Point Spectrum from Out-of-Time-Order Correlators"
+authors:
+  - family-names: Perez Eugenio
+    given-names: Erick Francisco
+    orcid: https://orcid.org/0009-0006-3228-4847
+    affiliation: "Independent Researcher, León, Guanajuato, Mexico"
+date-released: 2026-03-22
+version: "v1.0.0"
+repository-code: "https://github.com/erickperez79/otoc-rg-flow"
+license: CC-BY-4.0
+keywords:
+  - OTOCs
+  - quantum scrambling
+  - renormalization group
+  - quantum chaos
+  - Luttinger liquid
+  - Schwarzian
+  - kicked Ising model
+  - SYK model
+  - beta-function
+  - universality class
+preferred-citation:
+  type: generic
+  title: "Empirical Characterization of an Autonomous Accessibility Flow: A Universal β-Function and Continuous IR Fixed-Point Spectrum from Out-of-Time-Order Correlators"
+  authors:
+    - family-names: Perez Eugenio
+      given-names: Erick Francisco
+      orcid: https://orcid.org/0009-0006-3228-4847
+  year: 2026
+  publisher:
+    name: Zenodo
+  notes: "Preprint. arXiv submission in preparation."
