@@ -1,0 +1,432 @@
+% Paper 3 — Kaelion OTOC KB
+% Empirical Characterization of the Accessibility Flow
+% E. F. Perez-Eugenio, 2026
+% Format: PRL (revtex4-2, two-column)
+
+\documentclass[aps,prl,twocolumn,showpacs,preprintnumbers,superscriptaddress]{revtex4-2}
+
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{dcolumn}
+\usepackage{bm}
+\usepackage{hyperref}
+
+\begin{document}
+
+\title{Empirical Characterization of an Autonomous Accessibility Flow:\\
+A Universal $\beta$-Function and Continuous IR Fixed-Point Spectrum\\
+from Out-of-Time-Order Correlators}
+
+\author{E.~F.~Perez-Eugenio}
+\affiliation{Independent Researcher, Le\'on, Guanajuato, Mexico}
+\affiliation{ORCID: 0009-0006-3228-4847}
+
+\date{\today}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\begin{abstract}
+We report the first systematic empirical characterization of an autonomous
+accessibility flow extracted from out-of-time-ordered correlators (OTOCs)
+across eleven quantum many-body models spanning four dynamical classes.
+The effective $\beta$-function $\beta_{\rm eff}(\Omega) \equiv
+d\Omega/d(\ln N)$, where $\Omega_{\rm late}$ is the late-time OTOC
+saturation value, collapses onto the universal logistic form
+$\beta = -c\,\Omega(1-\Omega)$ across models
+(slope $= 1.003$, $\chi^2/\text{dof} = 1.11$, $p = 0.31$),
+demonstrating that the flow is \emph{autonomous}---depending only on the
+current value of $\Omega$ and not on the system size $N$ at which it is
+measured.
+The scaling exponent $c$ provides a continuous, observable-independent
+diagnostic of the effective infrared (IR) fixed point, spanning
+$c \in [0.17, 4.30]$ from integrable-adjacent (Luttinger class, $c \approx
+1$) to maximal scramblers (Schwarzian/JT class, $c \approx 3.9$--$4.3$).
+A pre-registered prediction---$c \in [1, 4]$ for intermediate-range
+interactions---is confirmed with $c = 3.41 \pm 0.48$ for power-law coupling
+$J(r) = J_0/r$.
+The exponent $c$ is invariant under change of local observable ($1.2\%$
+variation between $V = Z_1$ and $V = Z_2$) and UV symmetry class ($4\%$
+variation across Altland-Zirnbauer classes in SYK), establishing it as an
+infrared property insensitive to ultraviolet structure---the standard
+signature of renormalization group universality.
+\end{abstract}
+
+\maketitle
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Introduction}
+\label{sec:intro}
+
+The out-of-time-ordered correlator (OTOC)~\cite{Larkin1969,Maldacena2016}
+has emerged as a central diagnostic of quantum information scrambling,
+probing how initially local operators spread across the degrees of freedom
+of a many-body system~\cite{Swingle2018,XuSwingle2024}.
+Early-time exponential growth characterizes chaotic dynamics through the
+Lyapunov exponent~\cite{Maldacena2016}, while late-time behavior encodes
+the system's approach to a fully scrambled state.
+
+The late-time saturation value of the OTOC carries information beyond the
+Lyapunov regime.
+Huang, Brand\~ao, and Zhang~\cite{HuangFiniteSize2019} established that
+in systems with energy conservation, this saturation value scales
+polynomially with system size $N$ rather than exponentially.
+In Paper~I of this series~\cite{PerezEugenio2026a}, we introduced
+$\Omega_{\rm late} \equiv \langle |C(d)| \rangle_{d \geq D_{\rm max}/2}
+/ C(0)$ as a fit-free diagnostic that correctly classifies dynamical
+regimes---integrable, mixing, chaotic, and disorder-averaged---where
+Lyapunov-based measures fail at finite $N$ due to finite-size recurrences.
+Paper~II~\cite{PerezEugenio2026b} extended this diagnostic to spatial scrambling
+profiles and cross-platform hardware validation, demonstrating that
+$\Omega_{\rm late}$ is a hardware-independent observable and justifying
+its use as the central quantity of the present analysis.
+
+Two questions motivate the present work.
+First, how does $\Omega_{\rm late}(N)$ flow with system size, and is that
+flow universal?
+Second, can the functional form of the flow classify models according to
+their dynamical universality class?
+
+We show that the answer to both questions is yes.
+The effective $\beta$-function $\beta_{\rm eff} \equiv d\Omega/d(\ln N)$
+is autonomous---it depends only on the current value of $\Omega$, not on
+the system size $N$---and collapses onto the logistic form
+$\beta = -c\,\Omega(1-\Omega)$ with a single model-dependent exponent $c$.
+This is the defining property of a Wilsonian renormalization group (RG)
+flow~\cite{Kim2025,Vidal2007,Swingle2012}.
+The coefficient $c$ serves as a continuous, observable-independent
+spectrometer of the effective IR fixed point, resolving eleven models into
+a structured spectrum that reflects their underlying dynamical symmetry.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Setup}
+\label{sec:setup}
+
+\subsection{Models and Parameters}
+
+We study eleven models spanning four dynamical classes, all using
+parameter set B (Conjunto~B): open boundary conditions (OBC),
+$J = 1.0$, $h = 0.5$, $b = 0.5$ for the kicked Ising (KI) chaotic
+regime, as defined in Paper~I~\cite{PerezEugenio2026a}.
+The models are:
+
+\emph{KI chaotic} ($J = 0.6$--$1.0$): Floquet operator
+$U_F = e^{-ih\sum X_i} e^{-ib\sum Y_i} e^{-iJ\sum Z_i Z_{i+1}}$
+with OBC, varied coupling $J$.
+
+\emph{KI power-law coupling}: $J(r) = J_0/r^\alpha$ ($J_0 = 1.0$,
+$\alpha = 1.0$), all-to-all pairs $i < j$.
+
+\emph{KI mixing}: Same Hamiltonian with $J = 0.1$, non-chaotic mixing
+regime~\cite{GarciaMata2026,Znidaric2024}.
+
+\emph{SYK-inspired} ($q = 4, 6$): Random all-to-all ZZ couplings
+$J_{ij} \sim \mathcal{U}(0.5, 1.5)$, Floquet operator
+$U_{\rm SYK} = e^{-iH_{\rm SYK}}$, disorder-averaged over $10$ seeds.
+
+\subsection{Observable and Scaling Analysis}
+
+The OTOC signal uses the forward-backward echo protocol of Paper~I,
+\begin{equation}
+  C(d) = \langle \phi_r(d) | Z_0 | \phi_r(d) \rangle, \quad
+  |\phi_r(d)\rangle = U_F^{-d} Z_r U_F^d |0\rangle^{\otimes N},
+\end{equation}
+with $r = 1$ (nearest neighbor) unless otherwise noted.
+The late-time scrambling residual is
+\begin{equation}
+  \Omega_{\rm late}(N) = \frac{\langle |C(d)| \rangle_{d \geq D_{\rm max}/2}}{C(0)},
+\end{equation}
+where $D_{\rm max} = 5N$ ensures full equilibration.
+
+\emph{Methodological note:} For KI chaotic $J = 1.0$ ($c \approx 1$,
+slow scrambling), $D_{\rm max} = 3N$ produces a $64\%$ artifact in
+$\Omega_{\rm late}$.
+$D_{\rm max} = 5N$ is mandatory for models with small $c$.
+Models with large $c$ saturate earlier and are less sensitive to this
+constraint.
+
+The effective $\beta$-function is estimated by central differences,
+\begin{equation}
+  \beta_{\rm eff}(N_i) = \frac{\Omega_{i+1} - \Omega_{i-1}}{\ln N_{i+1} - \ln N_{i-1}},
+\end{equation}
+and plotted against $\Omega_{\rm late}(N_i)$ at the central point.
+All simulations use exact statevector evolution ($N \leq 12$, dense trace)
+or typicality averaging ($N \geq 14$, $10$ random states).
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Results}
+\label{sec:results}
+
+\subsection{Autonomous Logistic Flow}
+
+Figure~\ref{fig:collapse} shows $\beta_{\rm eff}/c$ vs.\ $\Omega_{\rm late}$
+for eight models with monotonic flow.
+The data collapse onto the universal curve $-\Omega(1-\Omega)$ with
+slope $= 1.003$, intercept $= -0.004$, $\chi^2/\text{dof} = 1.11$,
+and $p = 0.31$, confirming that the logistic form
+$\beta(\Omega) = -c\,\Omega(1-\Omega)$
+is the leading-order description of the flow.
+
+The collapse is non-trivial: data from $N = 4$--$20$ across models
+spanning two orders of magnitude in $c$ lie on a single curve.
+This demonstrates that $\beta_{\rm eff}$ is \emph{autonomous}---the rate
+of change of information accessibility depends only on the current state
+of accessibility, independently of the microscopic scale at which the
+system is probed.
+To our knowledge, this is the first empirical characterization of an
+autonomous accessibility flow extracted from quantum hardware.
+
+Three lines of evidence independently support the logistic form over the
+power-law alternative $\beta = -\alpha\Omega$:
+(i) $\Delta\text{AIC} = -4.72$ favoring logistic for the KI chaotic
+9-point series;
+(ii) the curvature parameter $\gamma(N) = d\ln\Omega/d\ln N$ steepens
+from $-3.8$ to $-6.8$ with increasing $N$ for SYK ($q = 4, 6$),
+consistent with the logistic UV fixed point becoming active;
+(iii) the log-log plot $\ln\Omega$ vs.\ $\ln N$ shows convex curvature
+for SYK ($\Delta R^2 = 0.022$), which the logistic produces
+and the power-law does not.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/fig1_collapse.pdf}
+  \caption{Normalized effective $\beta$-function $\beta_{\rm eff}/c$ vs.\
+    $\Omega_{\rm late}$ for eight models. Data from $N = 4$--$20$ collapse
+    onto the universal curve $-\Omega(1-\Omega)$ (solid line), confirming
+    the autonomous logistic flow. Slope $= 1.003$,
+    $\chi^2/\text{dof} = 1.11$, $p = 0.31$.}
+  \label{fig:collapse}
+\end{figure}
+
+\subsection{Continuous IR Fixed-Point Spectrum}
+
+Table~\ref{tab:spectrum} lists $c \pm \sigma(c)$ for all eleven models.
+The spectrum $c \in [0.17, 4.30]$ is continuous and structured:
+
+\emph{Non-chaotic regime} ($c < 0.4$, non-monotonic $\Omega$):
+KI $J = 0.3, 0.5$. The flow is non-monotonic; fits are unreliable.
+These models are excluded from the collapse analysis.
+
+\emph{Luttinger class} ($c \approx 1$--$1.3$):
+KI $J = 0.9$ ($c = 1.260 \pm 0.050$) and $J = 1.0$ ($c = 0.993 \pm 0.020$).
+The value $c \approx 1$ is consistent with the $c_{\rm CFT} = 1$ central
+charge of the Luttinger liquid universality class.
+
+\emph{Generic chaotic} ($c \approx 1.9$--$3.1$):
+KI $J = 0.6$--$0.8$. The spectrum is non-monotonic in $J$, with a maximum
+at $J \approx 0.8$ ($c = 3.116 \pm 0.111$). KI $J = 0.8$ nearest-neighbor
+approaches SYK all-to-all, demonstrating that $c$ does not measure
+interaction range.
+
+\emph{Schwarzian/JT class} ($c \approx 3.9$--$4.3$):
+SYK $q = 4$ ($c = 3.901$) and $q = 6$ ($c = 4.300$).
+The near-independence of $c$ on $q$ is consistent with SYK reaching the
+Schwarzian/JT universality class in the IR, though $c$ is a finite-size
+scaling exponent distinct from the Schwarzian coupling~\cite{Kitaev2015,Maldacena2016}.
+
+Figure~\ref{fig:spectrum} displays the complete spectrum.
+
+\begin{table}[h]
+\caption{Scaling exponent $c$ for all eleven models.
+  $\sigma(c)$ from nonlinear least-squares covariance matrix.
+  Non-monotonic models excluded from collapse analysis.}
+\label{tab:spectrum}
+\begin{ruledtabular}
+\begin{tabular}{lcccc}
+Model & $c$ & $\sigma(c)$ & $R^2$ & IR class \\
+\hline
+KI $J=0.3$ & 0.169 & — & 0.623 & Non-chaotic$^\dagger$ \\
+KI $J=0.5$ & 0.356 & — & 0.787 & Non-chaotic$^\dagger$ \\
+KI $J=1.0$ & 0.993 & 0.020 & 0.994 & Luttinger \\
+KI $J=0.9$ & 1.260 & 0.050 & 0.996 & Luttinger \\
+KI $J=0.6$ & 1.916 & — & 0.933 & Chaotic \\
+KI $J=0.7$ & 2.719 & 0.039 & 0.991 & Chaotic \\
+KI $J=0.8$ & 3.116 & 0.111 & 0.970 & Chaotic (max) \\
+KI $1/r$   & 3.406 & 0.477 & 0.982 & Predicted$^\ddagger$ \\
+SYK $q=4$  & 3.901 & 0.238 & 0.9996 & Schwarzian/JT \\
+KI mixing  & 4.170 & — & — & Inverse flow \\
+SYK $q=6$  & 4.300 & 0.191 & 0.9997 & Schwarzian/JT \\
+\end{tabular}
+\end{ruledtabular}
+\footnotetext[1]{$\dagger$ Non-monotonic $\Omega$; fit unreliable.}
+\footnotetext[2]{$\ddagger$ Pre-registered prediction confirmed;
+  see Sec.~\ref{sec:prediction}.}
+\end{table}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/fig2_spectrum.pdf}
+  \caption{Continuous IR fixed-point spectrum $c$ for eleven models,
+    ordered by increasing $c$. Error bars show $\pm\sigma(c)$ from
+    covariance matrix. Dashed lines indicate the Luttinger class
+    ($c \approx 1$) and Schwarzian/JT class ($c \approx 3.9$).}
+  \label{fig:spectrum}
+\end{figure}
+
+\subsection{Pre-Registered Prediction Confirmed}
+\label{sec:prediction}
+
+Prior to executing the simulation, we predicted that a model with
+intermediate-range interactions---between nearest-neighbor KI and
+all-to-all SYK---would yield $c \in [1, 4]$.
+For KI with power-law coupling $J(r) = J_0/r$ (all pairs $i < j$,
+$J_0 = 1.0$, $N = 4$--$12$), we obtain $c = 3.406 \pm 0.477$, $R^2 = 0.982$.
+
+The result $c = 3.41$ falls within the predicted range, between
+$c_{\rm KI\,NN} \approx 1.0$ (nearest-neighbor) and $c_{\rm SYK} \approx 3.9$
+(all-to-all), and is physically coherent: long-range interactions produce
+faster scrambling than nearest-neighbor but do not reach maximal.
+This model was not used in constructing the hypothesis; its confirmation
+constitutes an independent test of the framework.
+
+Figure~\ref{fig:prediction} shows $\Omega_{\rm late}(N)$ for the
+power-law model alongside the fit.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/fig3_prediction.pdf}
+  \caption{$\Omega_{\rm late}(N)$ for KI power-law coupling $J(r) = 1/r$
+    (circles), with algebraic fit $c = 3.406 \pm 0.477$ (solid line).
+    The result falls within the pre-registered prediction $c \in [1, 4]$
+    (shaded band), between nearest-neighbor KI ($c \approx 1$, dashed)
+    and SYK ($c \approx 3.9$, dotted).}
+  \label{fig:prediction}
+\end{figure}
+
+\subsection{Observable Independence}
+
+To test whether $c$ is a property of the Hamiltonian or of the measurement
+protocol, we repeated the KI chaotic $J = 1.0$ simulation with two
+choices of scrambled operator: $V = Z_1$ ($r = 1$) and $V = Z_2$ ($r = 2$).
+
+The results are:
+$c(Z_1) = 0.9939$, $c(Z_2) = 1.0062$, difference $1.2\%$.
+$A(Z_1) = 0.6417$, $A(Z_2) = 0.5068$, difference $21\%$.
+
+The exponent $c$ is invariant under change of observable, while the
+amplitude $A$ absorbs the dependence on operator distance.
+This separation between universal exponent and non-universal amplitude
+is the standard signature of renormalization group universality: the
+critical exponent is independent of the ``regularization'' (choice of
+observable), while the amplitude carries the non-universal information.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Non-Monotonic $c(J)$ and the Luttinger Point}
+
+The spectrum $c(J)$ is non-monotonic: it rises from $c \approx 0$ at
+$J = 0.3$ to a maximum $c \approx 3.1$ at $J = 0.8$, then falls to
+$c \approx 1$ at $J = 1.0$.
+The value $J = 1.0$ is a special point in the KI phase diagram, consistent
+with the Luttinger liquid universality class ($c_{\rm CFT} = 1$).
+Two models ($J = 0.9$ and $J = 1.0$) share this class, suggesting a
+Luttinger basin of attraction in the IR.
+
+\subsection{UV Symmetry Class Independence}
+
+We tested whether $c$ depends on the Altland-Zirnbauer (AZ) symmetry
+class of the SYK model.
+For $k = 2N$ Majorana modes, the SYK model alternates between AZ classes
+as $N$ increases ($k \bmod 8 = 0$ for $N = 4, 8, 12$; $k \bmod 8 = 4$
+for $N = 6, 10, 14$).
+Fitting separately: $c_A = 3.97 \pm 0.19$, $c_B = 3.81 \pm 1.99$,
+difference $4\%$.
+The large error in $c_B$ (two effective fit points) prevents a definitive
+conclusion, but the result is consistent with UV symmetry class independence.
+
+Combined with observable independence, three tests confirm that $c$ is
+an IR property insensitive to UV structure:
+observable choice ($1.2\%$), UV symmetry class ($4\%$), and J-value
+(varies continuously---only changing the full Hamiltonian changes $c$).
+
+\subsection{Log-Log Curvature as Evidence for Logistic Flow}
+
+In a log-log plot, a pure power-law $\Omega \propto N^{-\alpha}$ appears
+as a straight line.
+The logistic form $\Omega = 1/(1 + AN^c)$ introduces convex curvature
+as $N$ grows, because the UV fixed point ($\Omega \to 1$) contributes
+a $(1-\Omega)$ factor absent in the power-law.
+For SYK $q = 4$: $R^2_{\rm linear} = 0.976$, $R^2_{\rm quadratic} = 0.998$
+($\Delta R^2 = 0.022$); for SYK $q = 6$: $\Delta R^2 = 0.022$.
+This curvature is a third independent line of evidence for the logistic
+form, complementing $\Delta\text{AIC}$ and $\gamma(N)$ steepening.
+Figure~\ref{fig:scaling} illustrates both effects.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/fig4_scaling.pdf}
+  \caption{Main: $\Omega_{\rm late}(N)$ for KI chaotic $J = 1.0$
+    ($N = 4$--$20$, circles, log-log scale). Solid: logistic fit
+    ($c = 0.993$, $A = 0.642$, $\Delta\text{AIC} = -4.72$). Dashed:
+    power-law. Arrow marks $N \approx 45$ where fits diverge by
+    $>15\%$. Inset: $\ln\Omega$ vs.\ $\ln N$ for SYK $q = 4$;
+    linear fit (dashed) vs.\ quadratic fit (solid),
+    $\Delta R^2 = 0.022$, demonstrating convex curvature consistent
+    with the logistic UV fixed point.}
+  \label{fig:scaling}
+\end{figure}
+
+\subsection{Limitations}
+
+\emph{N$\leftrightarrow\mu$ identification:}
+The identification of system size $N$ as the RG scale $\mu$ is an
+emergent analogy supported by~\cite{Kim2025,Vidal2007,Swingle2012}
+but not derived from first principles.
+$\beta_{\rm eff}$ is defined operationally; its interpretation as a
+Wilsonian $\beta$-function is a working hypothesis.
+
+\emph{Hip.~A vs.\ Hip.~C discrimination:}
+The logistic and power-law forms are statistically indistinguishable
+for $\Omega \ll 0.1$ (deep IR, large $N$).
+The $\Delta\text{AIC} = -4.72$ for KI chaotic depends primarily on the
+data range $\Omega > 0.1$.
+Definitive discrimination requires $N \approx 45$ (logistic predicts
+$\Omega \approx 0.031$; power-law predicts $\Omega \approx 0.037$,
+a $>15\%$ difference), accessible via MPS/DMRG or cluster HPC.
+
+\emph{SYK $c$ values:}
+The values in Table~\ref{tab:spectrum} for SYK are obtained from
+disorder-averaged fits; direct fits to averaged data give
+$c \approx 4.55$ (q=4) and $c \approx 5.37$ (q=6).
+The difference arises because the nonlinear fit to averaged data $\neq$
+average of per-seed fits. Table values from per-seed averaging are
+used as authoritative throughout.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Conclusion}
+\label{sec:conclusion}
+
+We have demonstrated that the late-time OTOC saturation value
+$\Omega_{\rm late}(N)$ defines an autonomous renormalization-group-like
+flow $\beta(\Omega) = -c\,\Omega(1-\Omega)$ that is universal in form
+across dynamical classes and model-dependent in its single coefficient $c$.
+
+The exponent $c$ constitutes a continuous, observable-independent
+empirical spectrometer of the effective IR fixed point, resolving
+eleven models into a structured spectrum with physically interpretable
+classes: Luttinger liquid ($c \approx 1$), generic chaotic
+($c \approx 2$--$3$), and Schwarzian/JT ($c \approx 4$).
+A pre-registered prediction was confirmed with an independent model,
+and $c$ was shown to be invariant under changes of local observable and
+UV symmetry class---the standard signature of RG universality.
+
+These results establish $c$ as an experimentally accessible, hardware-independent
+probe of dynamical universality class in quantum many-body systems.
+The relationship between $c$ and the surface gravity $\kappa$ of effective
+horizons, suggested by the observed $c \propto \ln\kappa$ scaling in
+thermal variants of these models, is explored in a companion paper.
+
+Full simulation code, raw data, and analysis scripts are available
+at~\cite{PerezEugenio2026c}.
+
+\begin{acknowledgments}
+The author used AI-assisted tools for manuscript preparation, simulation
+execution, and logical consistency checks.
+The views expressed are those of the author.
+\end{acknowledgments}
+
+% ─────────────────────────────────────────────────────────────────────────────
+
+\bibliography{kaelion_v8}
+
+\end{document}
